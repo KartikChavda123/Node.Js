@@ -18,6 +18,7 @@ let book = [
     {id: "9", bookName: "Black Tornado", author: "Sandeep Unnithan", price: "250"},
     {id: "10", bookName: "Ahmedabad : A City in the World", author: "Amrita Shah", price: "200"},
 ]
+
 app.get("/", (req, res) => {
     res.render("index", { book });
 });
