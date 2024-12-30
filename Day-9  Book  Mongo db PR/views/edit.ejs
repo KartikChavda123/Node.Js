@@ -134,10 +134,8 @@
 <body>
     <h2>Edit <p class="h2-p">Book</p></h2>
 
-    <form action="/updateData" method="post">
+    <form action="/updateData" method="post" enctype="multipart/form-data">
         <input type="text" style="display: none;" placeholder="Enter Book Id" hidden name="id" value="<%=data.id%>">
-        
-        <input type="file"  placeholder="Enter Book Image URL" name="image" value="<%=data.image%>">
         
         <input type="text" placeholder="Enter Book Name" name="name" value="<%=data.name%>">
         
@@ -146,7 +144,11 @@
         <input type="text" placeholder="Enter language " name="language" value="<%=data.language%>">
         
         <input type="text" placeholder="Enter Book Price" name="price" value="<%=data.price%>">
+
+        <input type="file" name="image">
         
+        <img src="<%=data.image%>" alt="">
+
         <button type="submit">Update Data</button>
     </form>
 </body>

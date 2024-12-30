@@ -8,6 +8,7 @@ const db = require("./config/db");
 const schema = require("./model/firstSchema")
 
 app.set("view engine", "ejs");
+const fs = require("fs");
 
 app.use(express.urlencoded())
 
@@ -43,6 +44,10 @@ app.post("/addData",upload, async (req, res) => {
 })
 
 app.get("/deleteData", async (req, res) => {
+
+    let singleData = await schema.findById(req.query.id);
+    fs.unlinkSync(singleData.image);
+
     await schema.findByIdAndDelete(req.query.id).then((data) => {
             res.redirect("/");
         })
@@ -53,7 +58,14 @@ app.get("/editData", async (req, res) => {
     res.render("edit", { data });
 })
 
-app.post("/updateData", async (req, res) => {
+app.post("/updateData", upload,async (req, res) => {
+    
+    let img = "";
+    let singleData = await schema.findById(req.body.id);
+    req.file ? (img = req.file.path) : (img = singleData.image);
+    req.file && fs.unlinkSync(singleData.image);
+    req.body.image = img;
+
     await schema.findByIdAndUpdate(req.body.id, req.body)
         .then((data) => {
             res.redirect("/");
