@@ -83,8 +83,8 @@
         }
 
         div img {
-            width: 100%;
-            height: 200px;
+            width: 90%;
+            height: 300px;
             object-fit: cover;
             border-radius: 8px;
         }
@@ -98,7 +98,7 @@
         div p.name {
             font-size: 16px;
             font-weight: bold;
-            color: #3498db;
+            color: black;
         }
 
         div button {
@@ -144,6 +144,8 @@
         <input type="text" placeholder="Enter Book Name" name="name">
 
         <input type="text" placeholder="Enter Author Name" name="author">
+        
+        <input type="text" placeholder="Enter Language" name="language">
 
         <input type="text" placeholder="Enter Book Price" name="price">
 
@@ -155,9 +157,10 @@
         <% data.map((e, i) => { %>
             <div>
                 <img src="<%= e.image %>" alt="Book Image">
-                <p class="name">Book Name<%= e.name %></p>
-                <p>Author: <b><%= e.author %></b></p>
-                <p>Price: <b><%= e.price %></b></p>
+                <p class="name">Book Name:- <%= e.name %></p>
+                <p>Author:- <b><%= e.author %></b></p>
+                <p>Price:- <b><%= e.price %></b></p>
+                <p>language:- <b><%= e.language %></b></p>
                 <button><a href="/editData?id=<%= e.id %>">Edit Data</a></button>
                 <button><a href="/deleteData?id=<%= e.id %>">Delete Data</a></button>
             </div>

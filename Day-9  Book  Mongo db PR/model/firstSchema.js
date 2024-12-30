@@ -14,6 +14,10 @@ const schema = mongoose.Schema({
         required : true,
     },
     price :{
+        type : Number,
+        required : true,
+    },
+    language :{
         type : String,
         required : true,
     },
